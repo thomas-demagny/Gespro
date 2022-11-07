@@ -1,14 +1,14 @@
 server.port: 8080
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/gesAuth?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/ges2?useSSL=false&serverTimezone=UTC
     username: root
-    password: 
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         show_sql: true

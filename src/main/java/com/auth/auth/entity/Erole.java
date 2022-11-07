@@ -12,10 +12,6 @@ public enum Erole {
         this.role = role;
     }   
 
-
-    /**
-     * @return String return the role
-     */
     public String getRole() {
         return role;
     }

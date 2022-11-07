@@ -75,6 +75,7 @@ public class WebSecurityConfig {
         .and()
         .authorizeRequests()
         .antMatchers("/auth/signin").permitAll()
+        .antMatchers("/**").permitAll()
         .antMatchers("/test/**").permitAll()
         .anyRequest().authenticated();
 

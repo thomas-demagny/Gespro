@@ -1,0 +1,73 @@
+package com.auth.auth.controller;
+
+import com.auth.auth.entity.Address;
+import com.auth.auth.service.AddressService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+
+@RestController
+@RequestMapping("address")
+public class AddressController {
+    
+
+    
+    @Autowired
+    private AddressService addressService;
+    
+   
+
+    @GetMapping
+    public List<Address> getAllAddresses() {
+        return addressService.getAll().stream()
+                .map(address-> addressService
+                .save(address))
+                .collect(Collectors.toList());
+     
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Address> getAddressById(@PathVariable(value = "id") int id) {
+
+        Address address = addressService.getById(id);
+        return ResponseEntity.ok().body(address);
+
+        }
+
+    @PostMapping
+    public ResponseEntity<Address> create(Address address) {
+
+        Address response = addressService.save(address);
+
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @PutMapping
+    public ResponseEntity<Address> update(int id, Address address) {
+
+     Address request = addressService.getById(id);
+        request.setCountry(address.getCountry());
+        request.setZipCode(address.getZipCode());
+        request.setStreetLabel(address.getStreetLabel());
+        request.setStreetNumber(address.getStreetNumber());
+
+        Address response = addressService.save(request);
+
+        return ResponseEntity.ok().body(response);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable(value = "id") int id) {
+
+        addressService.delete(id);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+}
