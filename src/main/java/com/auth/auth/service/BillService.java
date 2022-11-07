@@ -2,6 +2,7 @@ package com.auth.auth.service;
 
 import com.auth.auth.entity.Bill;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface BillService {
@@ -13,5 +14,7 @@ public interface BillService {
     Bill save(Bill bill);
 
     void delete(int id);
+
+    
 
 }

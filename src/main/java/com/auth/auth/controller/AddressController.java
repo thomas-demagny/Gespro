@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 @RestController
 @RequestMapping("address")
 public class AddressController {
@@ -51,13 +50,7 @@ public class AddressController {
     @PutMapping
     public ResponseEntity<Address> update(int id, Address address) {
 
-     Address request = addressService.getById(id);
-        request.setCountry(address.getCountry());
-        request.setZipCode(address.getZipCode());
-        request.setStreetLabel(address.getStreetLabel());
-        request.setStreetNumber(address.getStreetNumber());
-
-        Address response = addressService.save(request);
+        Address response = addressService.save(address);
 
         return ResponseEntity.ok().body(response);
     }

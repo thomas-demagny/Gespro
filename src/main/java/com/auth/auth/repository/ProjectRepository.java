@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Integer> {
+    
     default Project findByIdOrThrow(int id) throws ResourceNotFoundException {
         return this.findById(id).orElseThrow(
             () -> new ResourceNotFoundException(this.getClass().getName(), "id", id));

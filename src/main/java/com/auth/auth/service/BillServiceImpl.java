@@ -5,6 +5,7 @@ import com.auth.auth.entity.Bill;
 import com.auth.auth.repository.BillRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -40,5 +41,5 @@ public class BillServiceImpl implements BillService{
          billRepository.delete(bill);
         
     }
-    
+
 }

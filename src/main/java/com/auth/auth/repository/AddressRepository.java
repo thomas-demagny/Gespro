@@ -13,6 +13,6 @@ public interface AddressRepository extends JpaRepository<Address, Integer> {
                     () -> new ResourceNotFoundException(this.getClass().getName(), "id", id));
                 
         }
-        }
+ }
 
     

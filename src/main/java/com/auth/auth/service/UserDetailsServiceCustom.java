@@ -10,7 +10,7 @@ import com.auth.auth.entity.User;
 import com.auth.auth.repository.UserRepository;
 
 @Service
-public class CustomUserDetailsService  implements UserDetailsService {
+public class UserDetailsServiceCustom  implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
@@ -18,11 +18,11 @@ public class CustomUserDetailsService  implements UserDetailsService {
     // Charge un utilisateur par son username
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
-
+        User user = userRepository.findByUsername(username);
+        if(user == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
         return UserDetailsImpl.build(user);
-    }
+    }            
 
 }
-    
