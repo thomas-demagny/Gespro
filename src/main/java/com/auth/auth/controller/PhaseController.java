@@ -36,8 +36,8 @@ public class PhaseController {
         return this.phaseService.getById(id);
     }
 
-    @PostMapping
-    public Phase save(@RequestBody Phase phase) {
+    @PostMapping("/new")
+    public Phase create(@RequestBody Phase phase) {
         return phaseService.save(phase);
     }
      

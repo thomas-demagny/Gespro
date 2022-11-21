@@ -65,8 +65,8 @@ public class AuthController {
     //Renvoie le token
     return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
     .body(new UserInfoResponse(userDetails.getId(),
-                               userDetails.getEmail(),
                                userDetails.getUsername(),
+                               userDetails.getEmail(),
                                roles
                                ));
   }               

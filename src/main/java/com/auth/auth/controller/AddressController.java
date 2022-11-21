@@ -39,16 +39,17 @@ public class AddressController {
 
         }
 
-    @PostMapping
-    public ResponseEntity<Address> create(Address address) {
+    @PostMapping("/new")
+    public ResponseEntity<Address> create(@RequestBody Address address) {
+        
 
         Address response = addressService.save(address);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public ResponseEntity<Address> update(int id, Address address) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Address> update(@PathVariable(value = "id") int id, @RequestBody Address address) {
 
         Address response = addressService.save(address);
 

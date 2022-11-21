@@ -23,8 +23,8 @@ public class OrganizationController {
     @Autowired
     public OrganizationService organizationService;
 
-    @PostMapping
-    public ResponseEntity<Organization> save(@RequestBody Organization organization) {
+    @PostMapping("/new")
+    public ResponseEntity<Organization> create(@RequestBody Organization organization) {
         Organization response = organizationService.save(organization);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);

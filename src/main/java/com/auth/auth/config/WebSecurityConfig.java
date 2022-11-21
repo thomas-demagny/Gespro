@@ -24,8 +24,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class WebSecurityConfig {
     
  
-
-    @Autowired
+ @Autowired
     private UserDetailsService userDetailsService;
 
 
@@ -82,6 +81,5 @@ public class WebSecurityConfig {
         return http.build();
 }
 
-
-
 }
+   

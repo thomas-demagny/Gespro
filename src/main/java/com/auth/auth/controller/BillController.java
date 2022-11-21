@@ -23,8 +23,8 @@ public class BillController {
     @Autowired
     public BillService billService;
 
-    @PostMapping
-    public ResponseEntity<Bill> save(@RequestBody Bill bill) {
+    @PostMapping("/new")
+    public ResponseEntity<Bill> create(@RequestBody Bill bill) {
 
         Bill response = billService.save(bill);
         return new ResponseEntity<>(response, HttpStatus.OK);

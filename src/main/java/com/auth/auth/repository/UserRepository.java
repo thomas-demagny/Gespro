@@ -1,7 +1,6 @@
 package com.auth.auth.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -10,10 +9,10 @@ import com.auth.auth.ResourceNotFoundException;
 import com.auth.auth.entity.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
     default User findByIdOrThrow(int id) throws ResourceNotFoundException{
-        return this.findById((long) id)
+        return this.findById(id)
         .orElseThrow(() -> new ResourceNotFoundException(this.getClass().getName(), "id", id));
         
 }
@@ -24,6 +23,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Boolean existsByEmail(String email);
 
-    
+     
 }
     

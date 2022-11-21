@@ -34,8 +34,8 @@ public class DocumentController {
         return this.documentService.getById(id);
     }
     
-    @PostMapping
-    public Document save(@RequestBody Document document) {
+    @PostMapping("/new")
+    public Document create(@RequestBody Document document) {
         return documentService.save(document);
     }
     

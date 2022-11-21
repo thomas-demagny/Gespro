@@ -23,8 +23,8 @@ public class UserController {
 	private UserService userService;
 
 
-	@PostMapping
-	public ResponseEntity<User> save(@RequestBody User user) {
+	@PostMapping("/new")
+	public ResponseEntity<User> create(@RequestBody User user) {
 
 		User response = userService.save(user);
 
@@ -45,6 +45,10 @@ public class UserController {
 		return this.userService.findById(id);
 	}
 
+    @GetMapping("/address/{id}")
+    public List<User> findUserByAddressId(@PathVariable(value = "id") int id) throws ResourceNotFoundException {
+	return this.userService.findByAddressId(id);
+}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<User> update(@PathVariable(value= "id") int id, @RequestBody User user) throws ResourceNotFoundException {

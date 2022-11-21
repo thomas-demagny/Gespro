@@ -34,8 +34,8 @@ public class ProjectController {
         return projectService.getById(id);
     }
 
-    @PostMapping
-    public ResponseEntity<Project> save(@RequestBody Project project) {
+    @PostMapping("/new")
+    public ResponseEntity<Project> create(@RequestBody Project project) {
         Project response = projectService.save(project);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
