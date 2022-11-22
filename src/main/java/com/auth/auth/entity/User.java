@@ -1,6 +1,10 @@
 package com.auth.auth.entity;
 
 import javax.persistence.*;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
 import javax.validation.constraints.*;
 import lombok.*;
@@ -69,5 +73,11 @@ public class User {
     inverseJoinColumns = @JoinColumn(name = "phase_id", referencedColumnName = "id"))
     private Set<Phase> phases = new HashSet<>();
 
+
+    public void setCreatedAt(String createdAt) {
+        if (createdAt == null) return;
+        DateTimeFormatter df = new DateTimeFormatterBuilder().appendPattern("uuuu-MM-dd['T'HH[:mm][:ss][.n]]").toFormatter(Locale.FRANCE);
+        this.createdAt = Date.from(LocalDate.parse(createdAt, df).atStartOfDay().toInstant(java.time.ZoneOffset.UTC));
+    }
 
 } 
