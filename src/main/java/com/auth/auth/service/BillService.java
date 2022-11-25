@@ -2,7 +2,6 @@ package com.auth.auth.service;
 
 import com.auth.auth.entity.Bill;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface BillService {

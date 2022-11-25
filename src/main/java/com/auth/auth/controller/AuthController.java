@@ -51,6 +51,7 @@ public class AuthController {
     .authenticate(new UsernamePasswordAuthenticationToken(
         loginRequest.getUsername(),
         loginRequest.getPassword())
+    		
         );
 
         //Ne stocke pas le mot de passe en mémoire

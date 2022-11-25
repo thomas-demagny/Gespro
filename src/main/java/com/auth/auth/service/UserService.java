@@ -17,5 +17,5 @@ public interface UserService {
 
     void delete(int id);
 
-    List<User> findByAddressId(int id);
+    
 }

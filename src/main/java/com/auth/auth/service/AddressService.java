@@ -1,3 +1,4 @@
+/*
 package com.auth.auth.service;
 
 import com.auth.auth.entity.Address;
@@ -18,3 +19,4 @@ public interface AddressService {
        Address getAddressByCountryAndZipCode(String country, int zipCode);
 
 }
+*/

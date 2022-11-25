@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -50,11 +48,7 @@ public class Organization {
     @OneToMany(mappedBy = "organization")
     private List<Project> projects;
 
-    @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
-
-
+    
     public Project addProject(Project project) {
         getProjects().add(project);
         project.setOrganization(this);

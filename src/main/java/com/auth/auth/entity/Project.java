@@ -2,6 +2,7 @@ package com.auth.auth.entity;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -62,8 +63,7 @@ public class Project {
     @JoinColumn(name = "organization_id")
     private Organization organization;
 
-    @OneToMany(mappedBy = "project")
-    @JsonBackReference
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
     private Set<Phase> phases = new HashSet<>();
 
 }

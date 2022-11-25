@@ -1,7 +1,6 @@
 package com.auth.auth.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -49,15 +48,7 @@ public class UserServiceImpl implements UserService {
             userRepository.delete(user);
         }
 
-    @Override
-    public List<User> findByAddressId(int id) {
-        return userRepository.findAll()
-        .stream()
-        .filter(user -> user.getAddress().getId() == id)
-        .collect(Collectors.toList());
-        
-    }
-       
+         
 
     }
 

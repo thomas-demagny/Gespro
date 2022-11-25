@@ -25,9 +25,9 @@ public class UserController {
 
 	@PostMapping("/new")
 	public ResponseEntity<User> create(@RequestBody User user) {
-
+System.out.println(user);
 		User response = userService.save(user);
-
+		
 		return new ResponseEntity<>(response, HttpStatus.CREATED);
 	}
 
@@ -45,14 +45,9 @@ public class UserController {
 		return this.userService.findById(id);
 	}
 
-    @GetMapping("/address/{id}")
-    public List<User> findUserByAddressId(@PathVariable(value = "id") int id) throws ResourceNotFoundException {
-	return this.userService.findByAddressId(id);
-}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<User> update(@PathVariable(value= "id") int id, @RequestBody User user) throws ResourceNotFoundException {
-
 
 		User response = userService.save(user);
 

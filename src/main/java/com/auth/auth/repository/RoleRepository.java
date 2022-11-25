@@ -7,7 +7,6 @@ import com.auth.auth.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.auth.auth.entity.Erole;
-import com.auth.auth.entity.Role;
 import org.springframework.stereotype.Repository;
 
 @Repository

@@ -1,3 +1,4 @@
+/*
 package com.auth.auth.repository;
 
 import com.auth.auth.ResourceNotFoundException;
@@ -14,5 +15,5 @@ public interface AddressRepository extends JpaRepository<Address, Integer> {
                 
         }
  }
-
+*/
     

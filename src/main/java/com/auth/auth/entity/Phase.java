@@ -1,6 +1,6 @@
 package com.auth.auth.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -47,34 +47,71 @@ public class Phase {
     private String status;
 
     @Column(name = "started_at", nullable = false)
-    private Date startedAt;
+    private LocalDateTime startedAt;
 
     @Column(name = "ended_at")
-    private Date endedAt;
+    private LocalDateTime endedAt;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
 
     @ManyToMany(mappedBy = "phases", fetch = FetchType.LAZY)
     @JsonBackReference
     private Set<User> users = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    @JsonBackReference
+    private Project project;
 
     @OneToMany(mappedBy = "phase")
     @JsonBackReference
     private Set<Bill> bills = new HashSet<>();
 
     @OneToMany
-    @JsonBackReference
     @JoinColumn(name = "phase_id")
+    @JsonBackReference
     private Set<Document> documents = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "project_id")
-    private Project project;
+    
+    public void addBill(Bill bill) {
+        bills.add(bill);
+        bill.setPhase(this);
+    }
 
+    public void removeBill(Bill bill) {
+        bills.remove(bill);
+        bill.setPhase(null);
+    }
+
+    public void addDocument(Document document) {
+        documents.add(document);
+        document.setPhase(this);
+    }
+
+    public void removeDocument(Document document) {
+        documents.remove(document);
+        document.setPhase(null);
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public void setStartedAt(LocalDateTime startedAt) {
+        this.startedAt = startedAt;
+    }
+
+    public void setEndedAt(LocalDateTime endedAt) {
+        this.endedAt = endedAt;
+    }
+    
 }

@@ -2,7 +2,7 @@ package com.auth.auth.entity;
 
 import javax.persistence.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
@@ -50,16 +50,12 @@ public class User {
     private String password;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(name = "updated_at", nullable = true)
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
-    @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
-
-
+  
    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles",
     joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -74,10 +70,16 @@ public class User {
     private Set<Phase> phases = new HashSet<>();
 
 
-    public void setCreatedAt(String createdAt) {
+ public void setCreatedAt(String createdAt) {
         if (createdAt == null) return;
         DateTimeFormatter df = new DateTimeFormatterBuilder().appendPattern("uuuu-MM-dd['T'HH[:mm][:ss][.n]]").toFormatter(Locale.FRANCE);
-        this.createdAt = Date.from(LocalDate.parse(createdAt, df).atStartOfDay().toInstant(java.time.ZoneOffset.UTC));
+        this.createdAt = LocalDateTime.parse(createdAt, df);
     }
 
+    public void setUpdatedAt(String updatedAt) {
+        if (updatedAt == null) return;
+        DateTimeFormatter df = new DateTimeFormatterBuilder().appendPattern("uuuu-MM-dd['T'HH[:mm][:ss][.n]]").toFormatter(Locale.FRANCE);
+        this.updatedAt = LocalDateTime.parse(updatedAt, df);
+    }
+    
 } 
