@@ -1,10 +1,10 @@
 package com.auth.auth.entity;
 
 public enum Erole {
-    ROLE_USER("ROLE_USER"),
-    ROLE_ADMIN("ROLE_ADMIN"),
-    ROLE_SECRETARY("ROLE_SECRETARY"),
-    ROLE_MODERATOR("ROLE_MODERATOR");
+    ROLE_USER("User"),
+    ROLE_ADMIN("Admin"),
+    ROLE_SECRETARY("Secretary"),
+    ROLE_ProjectManager("ProjectManager");
     
     private String role;
 

@@ -46,10 +46,10 @@ public class Project {
     private double amount;
 
     @Column(name = "created_at")
-    private Date createdAt = new Date();
+    private Date createdAt;
 
     @Column(name = "updated_at")
-    private Date updatedAt = new Date();
+    private Date updatedAt;
 
 
     @ManyToOne

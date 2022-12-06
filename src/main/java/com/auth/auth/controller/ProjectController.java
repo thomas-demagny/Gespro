@@ -22,7 +22,7 @@ public class ProjectController {
 
     @GetMapping
     public List<Project> getAll() {
-        return projectService.getAll().stream()
+        return   projectService.getAll().stream()
                 .map(project-> projectService
                 .save(project))
                 .collect(Collectors.toList());

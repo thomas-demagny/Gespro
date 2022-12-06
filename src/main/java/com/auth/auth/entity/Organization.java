@@ -29,26 +29,35 @@ public class Organization {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "addr_web")
-    private String addrWeb;
-
-    @Column(name = "contact_email")
-    private String contactEmail;
-
-    @Column(name = "contact_name")
-    private String contactName;
-
     @Column(name = "name")
     private String name;
 
+    @Column(name = "website")
+    private String website;
 
     @Column(name = "phone_number")
     private int phoneNumber;
 
+    @Column(name = "contact_name")
+    private String contactName;
+
+    @Column(name = "contact_email")
+    private String contactEmail;
+
+    @Column(name = "street_number")
+    private int streetNumber;
+
+    @Column(name = "street_label")
+    private String streetLabel;
+
+    @Column(name = "city")
+    private String city;
+    @Column(name = "zip_code")
+    private int zipCode;
+
     @OneToMany(mappedBy = "organization")
     private List<Project> projects;
 
-    
     public Project addProject(Project project) {
         getProjects().add(project);
         project.setOrganization(this);
