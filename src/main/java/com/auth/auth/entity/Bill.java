@@ -40,7 +40,7 @@ public class Bill {
     private String status;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference()
     @JoinColumn(name = "phase_id")
     private Phase phase;
 

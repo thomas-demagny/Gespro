@@ -65,7 +65,7 @@ public class Phase {
 
     @ManyToOne
     @JoinColumn(name = "project_id")
-    @JsonBackReference
+    @JsonBackReference(value = "project")
     private Project project;
 
     @OneToMany(mappedBy = "phase")
@@ -74,7 +74,6 @@ public class Phase {
 
     @OneToMany
     @JoinColumn(name = "phase_id")
-    @JsonBackReference
     private Set<Document> documents = new HashSet<>();
 
     

@@ -73,12 +73,18 @@ public class User {
     @JoinTable(name = "users_phases", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "phase_id", referencedColumnName = "id"))
     private Set<Phase> phases = new HashSet<>();
 
-    public void setCreatedAt(String createdAt) {
-        if (createdAt == null)
+    public void setCreatedAt(String localDateTime) {
+        if (localDateTime == null)
             return;
         DateTimeFormatter df = new DateTimeFormatterBuilder().appendPattern("uuuu-MM-dd['T'HH[:mm][:ss][.n]]")
                 .toFormatter(Locale.FRANCE);
-        this.createdAt = LocalDateTime.parse(createdAt, df);
+        this.createdAt = LocalDateTime.parse(localDateTime, df);
+    }
+
+    public void setCreatedAt(LocalDateTime localDateTime) {
+        if (localDateTime == null)
+            return;
+        this.createdAt = localDateTime;
     }
 
     public void setUpdatedAt(String updatedAt) {
@@ -87,6 +93,10 @@ public class User {
         DateTimeFormatter df = new DateTimeFormatterBuilder().appendPattern("uuuu-MM-dd['T'HH[:mm][:ss][.n]]")
                 .toFormatter(Locale.FRANCE);
         this.updatedAt = LocalDateTime.parse(updatedAt, df);
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+         this.updatedAt = updatedAt;
     }
 
 }

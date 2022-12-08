@@ -36,7 +36,7 @@ public class Organization {
     private String website;
 
     @Column(name = "phone_number")
-    private int phoneNumber;
+    private String phoneNumber;
 
     @Column(name = "contact_name")
     private String contactName;

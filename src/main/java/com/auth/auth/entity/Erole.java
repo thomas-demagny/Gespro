@@ -4,8 +4,9 @@ public enum Erole {
     ROLE_USER("User"),
     ROLE_ADMIN("Admin"),
     ROLE_SECRETARY("Secretary"),
-    ROLE_ProjectManager("ProjectManager");
+    ROLE_ProjectManager("Project Manager");
     
+
     private String role;
 
     private Erole(String role) {

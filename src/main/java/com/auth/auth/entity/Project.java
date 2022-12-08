@@ -53,12 +53,12 @@ public class Project {
 
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "user-project")
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "organization-project")
     @JoinColumn(name = "organization_id")
     private Organization organization;
 

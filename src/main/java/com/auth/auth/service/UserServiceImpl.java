@@ -1,5 +1,6 @@
 package com.auth.auth.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
-        }
+    }
 
     @Override
     public User findById(int id) {
@@ -35,6 +36,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user) {
+        User userDB = userRepository.findByIdOrThrow(user.getId());
+
+        if (userDB.getId() == 0) {
+            userDB.setCreatedAt(LocalDateTime.now());
+        } else {
+            userDB.setUpdatedAt(LocalDateTime.now());
+        }
+        user = userDB;
         return userRepository.save(user);
     }
 
@@ -44,11 +53,8 @@ public class UserServiceImpl implements UserService {
 
     public void delete(int id) {
         User user = userRepository.findByIdOrThrow(id);
-        
-            userRepository.delete(user);
-        }
 
-         
-
+        userRepository.delete(user);
     }
 
+}
