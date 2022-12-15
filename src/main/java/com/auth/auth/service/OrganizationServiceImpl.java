@@ -7,11 +7,19 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type Organization service.
+ */
 @Service
 public class OrganizationServiceImpl implements OrganizationService {
 
     private final OrganizationRepository organizationRepository;
 
+    /**
+     * Instantiates a new Organization service.
+     *
+     * @param organizationRepository the organization repository
+     */
     public OrganizationServiceImpl(OrganizationRepository organizationRepository) {
         super();
         this.organizationRepository = organizationRepository;

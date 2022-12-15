@@ -23,6 +23,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * The type Phase.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -68,7 +71,12 @@ public class Phase {
     @JsonBackReference(value = "project")
     private Project project;
 
-    @OneToMany(mappedBy = "phase")
+    /**
+     * Sets created at.
+     *
+     * @param createdAt the created at
+     */
+/*    @OneToMany(mappedBy = "phase")
     @JsonBackReference
     private Set<Bill> bills = new HashSet<>();
 
@@ -96,19 +104,34 @@ public class Phase {
         documents.remove(document);
         document.setPhase(null);
     }
-
+*/
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
+    /**
+     * Sets updated at.
+     *
+     * @param updatedAt the updated at
+     */
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 
+    /**
+     * Sets started at.
+     *
+     * @param startedAt the started at
+     */
     public void setStartedAt(LocalDateTime startedAt) {
         this.startedAt = startedAt;
     }
 
+    /**
+     * Sets ended at.
+     *
+     * @param endedAt the ended at
+     */
     public void setEndedAt(LocalDateTime endedAt) {
         this.endedAt = endedAt;
     }

@@ -14,15 +14,25 @@ import com.auth.auth.entity.Role;
 import com.auth.auth.service.RoleService;
 
 
-
-
+/**
+ * The type Role controller.
+ */
 @RestController
 @RequestMapping("role")
 public class RoleController {
 
+    /**
+     * The Role service.
+     */
     @Autowired
     public RoleService roleService;
 
+    /**
+     * Create response entity.
+     *
+     * @param role the role
+     * @return the response entity
+     */
     @PostMapping("/new")
     public ResponseEntity<Role> create(@RequestBody Role role) {
 
@@ -30,6 +40,11 @@ public class RoleController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     @GetMapping
     public List<Role> getAll() {
         return roleService.getAll().stream()
@@ -39,17 +54,37 @@ public class RoleController {
 
     }
 
+    /**
+     * Gets role by id.
+     *
+     * @param id the id
+     * @return the role by id
+     * @throws ResourceNotFoundException the resource not found exception
+     */
     @GetMapping("/{id}")
     public Role getRoleById(@PathVariable(value = "id") int id) throws ResourceNotFoundException {
         return this.roleService.getById(id);
     }
 
+    /**
+     * Update response entity.
+     *
+     * @param role the role
+     * @return the response entity
+     * @throws ResourceNotFoundException the resource not found exception
+     */
     @PutMapping("/{id}")
-    public ResponseEntity<Role> update(@PathVariable(value = "id") int id, @RequestBody Role role) throws ResourceNotFoundException {
+    public ResponseEntity<Role> update(@RequestBody Role role) throws ResourceNotFoundException {
         Role response = roleService.save(role);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    /**
+     * Delete role response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Role> deleteRole(@PathVariable(value = "id") int id) {
 

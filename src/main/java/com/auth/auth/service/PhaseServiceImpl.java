@@ -6,11 +6,19 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type Phase service.
+ */
 @Service
 public class PhaseServiceImpl implements PhaseService {
 
     private final PhaseRepository phaseRepository;
 
+    /**
+     * Instantiates a new Phase service.
+     *
+     * @param phaseRepository the phase repository
+     */
     public PhaseServiceImpl(PhaseRepository phaseRepository) {
         super();
         this.phaseRepository = phaseRepository;

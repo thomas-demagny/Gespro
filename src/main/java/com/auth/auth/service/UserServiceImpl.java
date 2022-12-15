@@ -8,11 +8,19 @@ import org.springframework.stereotype.Service;
 import com.auth.auth.entity.User;
 import com.auth.auth.repository.UserRepository;
 
+/**
+ * The type User service.
+ */
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
+    /**
+     * Instantiates a new User service.
+     *
+     * @param userRepository the user repository
+     */
     public UserServiceImpl(UserRepository userRepository) {
         super();
         this.userRepository = userRepository;
@@ -47,6 +55,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+    /**
+     * Gets by id.
+     *
+     * @param id the id
+     * @return the by id
+     */
     public User getById(int id) {
         return userRepository.findByIdOrThrow(id);
     }

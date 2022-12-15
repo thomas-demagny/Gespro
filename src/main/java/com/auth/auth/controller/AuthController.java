@@ -26,23 +26,44 @@ import com.auth.auth.request.LoginRequest;
 import com.auth.auth.response.UserInfoResponse;
 import com.auth.auth.service.UserDetailsImpl;
 
+/**
+ * The type Auth controller.
+ */
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("auth")
 public class AuthController {
+  /**
+   * The Authentication manager.
+   */
   @Autowired
   AuthenticationManager authenticationManager;
 
+  /**
+   * The User repository.
+   */
   @Autowired
   UserRepository userRepository;
 
+  /**
+   * The Role repository.
+   */
   @Autowired
   RoleRepository roleRepository;
 
+  /**
+   * The Encoder.
+   */
   @Autowired
   PasswordEncoder encoder;
 
-  
+
+  /**
+   * Authenticate user response entity.
+   *
+   * @param loginRequest the login request
+   * @return the response entity
+   */
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 

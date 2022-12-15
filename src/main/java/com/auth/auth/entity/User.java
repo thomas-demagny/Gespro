@@ -9,14 +9,18 @@ import java.util.*;
 import javax.validation.constraints.*;
 import lombok.*;
 
+/**
+ * The type User.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "user", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "username"),
-        @UniqueConstraint(columnNames = "email")
+        @UniqueConstraint(columnNames = {"username"}),
+        @UniqueConstraint(columnNames = {"email"})
 })
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,30 +77,62 @@ public class User {
     @JoinTable(name = "users_phases", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "phase_id", referencedColumnName = "id"))
     private Set<Phase> phases = new HashSet<>();
 
+    /**
+     * Sets created at.
+     *
+     * @param localDateTime the local date time
+     */
     public void setCreatedAt(String localDateTime) {
-        if (localDateTime == null)
+        if (localDateTime == null  || localDateTime.equals(""))
             return;
         DateTimeFormatter df = new DateTimeFormatterBuilder().appendPattern("uuuu-MM-dd['T'HH[:mm][:ss][.n]]")
                 .toFormatter(Locale.FRANCE);
         this.createdAt = LocalDateTime.parse(localDateTime, df);
     }
 
+    /**
+     * Sets created at.
+     *
+     * @param localDateTime the local date time
+     */
     public void setCreatedAt(LocalDateTime localDateTime) {
         if (localDateTime == null)
             return;
         this.createdAt = localDateTime;
     }
 
-    public void setUpdatedAt(String updatedAt) {
-        if (updatedAt == null)
+    /**
+     * Sets updated at.
+     *
+     * @param localDateTime the local date time
+     */
+    public void setUpdatedAt(String localDateTime) {
+        if (localDateTime == null || localDateTime.equals(""))
             return;
         DateTimeFormatter df = new DateTimeFormatterBuilder().appendPattern("uuuu-MM-dd['T'HH[:mm][:ss][.n]]")
                 .toFormatter(Locale.FRANCE);
-        this.updatedAt = LocalDateTime.parse(updatedAt, df);
+        this.updatedAt = LocalDateTime.parse(localDateTime, df);
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-         this.updatedAt = updatedAt;
+    /**
+     * Sets updated at.
+     *
+     * @param localDateTime the local date time
+     */
+    public void setUpdatedAt(LocalDateTime localDateTime) {
+         this.updatedAt = localDateTime;
     }
+
+    /**
+     * Add roles.
+     *
+     * @param role the role
+     */
+    public void addRoles(Erole... role) {
+        for (Erole rol : role){
+            roles.add(new Role(rol) );
+        }
+    }
+
 
 }

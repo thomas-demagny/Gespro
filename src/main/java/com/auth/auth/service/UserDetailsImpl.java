@@ -13,6 +13,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.auth.auth.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * The type User details.
+ */
 public class UserDetailsImpl implements UserDetails {
   private static final long serialVersionUID = 1L;
 
@@ -27,7 +30,16 @@ public class UserDetailsImpl implements UserDetails {
 
   private Collection<? extends GrantedAuthority> authorities;
 
-  public UserDetailsImpl(int id, String username, String email, String password,
+    /**
+     * Instantiates a new User details.
+     *
+     * @param id          the id
+     * @param username    the username
+     * @param email       the email
+     * @param password    the password
+     * @param authorities the authorities
+     */
+    public UserDetailsImpl(int id, String username, String email, String password,
     Collection<? extends GrantedAuthority> authorities) {
     this.id = id;
     this.username = username;
@@ -36,7 +48,13 @@ public class UserDetailsImpl implements UserDetails {
     this.authorities = authorities;
   }
 
-  public static UserDetailsImpl build(User user) {
+    /**
+     * Build user details.
+     *
+     * @param user the user
+     * @return the user details
+     */
+    public static UserDetailsImpl build(User user) {
     List<GrantedAuthority> authorities = (user.getRoles()).stream()
         .map(role -> new SimpleGrantedAuthority(role.getName().name()))
         .collect(Collectors.toList());
@@ -54,11 +72,21 @@ public class UserDetailsImpl implements UserDetails {
     return authorities;
   }
 
-  public int getId() {
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public int getId() {
     return id;
   }
 
-  public String getEmail() {
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
+    public String getEmail() {
     return email;
   }
 

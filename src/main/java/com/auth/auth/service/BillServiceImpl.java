@@ -7,11 +7,19 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type Bill service.
+ */
 @Service
 public class BillServiceImpl implements BillService{
 
     private final BillRepository billRepository;
 
+    /**
+     * Instantiates a new Bill service.
+     *
+     * @param billRepository the bill repository
+     */
     public BillServiceImpl(BillRepository billRepository) {
         this.billRepository = billRepository;
     }

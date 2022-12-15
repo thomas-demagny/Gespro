@@ -4,13 +4,38 @@ import com.auth.auth.entity.Organization;
 
 import java.util.List;
 
+/**
+ * The interface Organization service.
+ */
 public interface OrganizationService {
-    
+
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     List<Organization> getAll();
 
-	Organization getById(int id);
+    /**
+     * Gets by id.
+     *
+     * @param id the id
+     * @return the by id
+     */
+    Organization getById(int id);
 
-	Organization save(Organization organization);
+    /**
+     * Save organization.
+     *
+     * @param organization the organization
+     * @return the organization
+     */
+    Organization save(Organization organization);
 
-	void delete(int id);
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
+    void delete(int id);
 }

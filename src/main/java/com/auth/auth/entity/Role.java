@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * The type Role.
+ */
 @Setter
 @Getter
 @NoArgsConstructor
@@ -21,6 +24,14 @@ public class Role {
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
     private Erole name;
-  
+
+    /**
+     * Instantiates a new Role.
+     *
+     * @param name the name
+     */
+    Role(Erole name){
+        this.name = name;
+    }
 }
 

@@ -16,6 +16,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * The type Document.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -49,11 +52,21 @@ public class Document {
     @JoinColumn(name = "phase_id")
     private Phase phase;
 
-   
+
+    /**
+     * Sets created at.
+     *
+     * @param createdAt the created at
+     */
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
+    /**
+     * Sets phase.
+     *
+     * @param phase the phase
+     */
     public void setPhase(Phase phase) {
         this.phase = phase;
     }

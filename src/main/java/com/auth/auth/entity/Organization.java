@@ -15,6 +15,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * The type Organization.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -58,18 +61,5 @@ public class Organization {
     @OneToMany(mappedBy = "organization")
     private List<Project> projects;
 
-    public Project addProject(Project project) {
-        getProjects().add(project);
-        project.setOrganization(this);
-
-        return project;
-    }
-
-    public Project removeProject(Project project) {
-        getProjects().remove(project);
-        project.setOrganization(null);
-
-        return project;
-    }
 
 }

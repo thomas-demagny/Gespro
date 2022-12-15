@@ -6,11 +6,19 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type Project service.
+ */
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
     private final ProjectRepository projectRepository;
 
+    /**
+     * Instantiates a new Project service.
+     *
+     * @param projectRepository the project repository
+     */
     public ProjectServiceImpl(ProjectRepository projectRepository) {
         super();
         this.projectRepository = projectRepository;

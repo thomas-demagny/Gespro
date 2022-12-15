@@ -6,11 +6,19 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type Document service.
+ */
 @Service
 public class DocumentServiceImpl implements DocumentService{
 
     private final DocumentRepository documentRepository;
 
+    /**
+     * Instantiates a new Document service.
+     *
+     * @param documentRepository the document repository
+     */
     public DocumentServiceImpl(DocumentRepository documentRepository) {
         this.documentRepository = documentRepository;
     }

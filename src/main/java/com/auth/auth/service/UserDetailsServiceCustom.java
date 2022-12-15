@@ -9,9 +9,15 @@ import org.springframework.stereotype.Service;
 import com.auth.auth.entity.User;
 import com.auth.auth.repository.UserRepository;
 
+/**
+ * The type User details service custom.
+ */
 @Service
 public class UserDetailsServiceCustom  implements UserDetailsService {
 
+    /**
+     * The User repository.
+     */
     @Autowired
     UserRepository userRepository;
 

@@ -13,6 +13,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
+/**
+ * The type Project.
+ */
 @Getter
 @Setter
 @AllArgsConstructor
@@ -53,16 +56,17 @@ public class Project {
 
 
     @ManyToOne
-    @JsonBackReference(value = "user-project")
+    @JsonBackReference(value = "user")
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JsonBackReference(value = "organization-project")
+    @JsonBackReference(value = "organization")
     @JoinColumn(name = "organization_id")
     private Organization organization;
 
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
     private Set<Phase> phases = new HashSet<>();
+
 
 }
