@@ -1,12 +1,9 @@
 package com.auth.auth.controller;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
-import com.auth.auth.entity.Erole;
-import com.auth.auth.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import com.auth.auth.ResourceNotFoundException;
 import com.auth.auth.entity.User;
 import com.auth.auth.service.UserService;
-
-import javax.validation.Valid;
 
 
 /**

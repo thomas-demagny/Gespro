@@ -2,6 +2,8 @@ package com.auth.auth.entity;
 
 import javax.persistence.*;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
@@ -21,7 +23,9 @@ import lombok.*;
         @UniqueConstraint(columnNames = {"email"})
 })
 
-public class User {
+public class User implements Serializable {
+    @Serial
+    private final static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -70,11 +74,15 @@ public class User {
     private int zipCode;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "users_phases", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "phase_id", referencedColumnName = "id"))
+    @JoinTable(name = "users_phases",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "phase_id", referencedColumnName = "id"))
     private Set<Phase> phases = new HashSet<>();
 
     /**
@@ -83,7 +91,7 @@ public class User {
      * @param localDateTime the local date time
      */
     public void setCreatedAt(String localDateTime) {
-        if (localDateTime == null  || localDateTime.equals(""))
+        if (localDateTime == null || localDateTime.equals(""))
             return;
         DateTimeFormatter df = new DateTimeFormatterBuilder().appendPattern("uuuu-MM-dd['T'HH[:mm][:ss][.n]]")
                 .toFormatter(Locale.FRANCE);
@@ -109,7 +117,8 @@ public class User {
     public void setUpdatedAt(String localDateTime) {
         if (localDateTime == null || localDateTime.equals(""))
             return;
-        DateTimeFormatter df = new DateTimeFormatterBuilder().appendPattern("uuuu-MM-dd['T'HH[:mm][:ss][.n]]")
+        DateTimeFormatter df = new DateTimeFormatterBuilder()
+                .appendPattern("uuuu-MM-dd['T'HH[:mm][:ss][.n]]")
                 .toFormatter(Locale.FRANCE);
         this.updatedAt = LocalDateTime.parse(localDateTime, df);
     }
@@ -120,19 +129,6 @@ public class User {
      * @param localDateTime the local date time
      */
     public void setUpdatedAt(LocalDateTime localDateTime) {
-         this.updatedAt = localDateTime;
+        this.updatedAt = localDateTime;
     }
-
-    /**
-     * Add roles.
-     *
-     * @param role the role
-     */
-    public void addRoles(Erole... role) {
-        for (Erole rol : role){
-            roles.add(new Role(rol) );
-        }
-    }
-
-
 }

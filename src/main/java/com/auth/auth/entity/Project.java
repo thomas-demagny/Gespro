@@ -1,5 +1,7 @@
 package com.auth.auth.entity;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +24,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table
-public class Project {
+public class Project implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id

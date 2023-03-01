@@ -1,5 +1,7 @@
 package com.auth.auth.entity;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -25,7 +27,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "document")
-public class Document {
+public class Document implements Serializable {
+
+    @Serial
     private final static long serialVersionUID = 1L;
 
     @Id

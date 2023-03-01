@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 /**
  * The type Role.
  */
@@ -16,22 +19,41 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "role")
-public class Role {
+public class Role implements Serializable {
+
+    public enum Erole {
+
+        /**
+         * Role user erole.
+         */
+        ROLE_USER("User"),
+        /**
+         * Role admin erole.
+         */
+        ROLE_ADMIN("Admin"),
+        /**
+         * Role secretary erole.
+         */
+        ROLE_SECRETARY("Secretary"),
+        /**
+         * The Role project manager.
+         */
+        ROLE_ProjectManager("Project-Manager");
+
+        Erole(String userRole) {
+
+        }
+    }
+
+    @Serial
+    private final static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Enumerated(EnumType.STRING)
-    @Column(length = 20)
+    @Column(name = "name")
     private Erole name;
 
-    /**
-     * Instantiates a new Role.
-     *
-     * @param name the name
-     */
-    Role(Erole name){
+    public Role(Erole name) {
         this.name = name;
     }
 }
-

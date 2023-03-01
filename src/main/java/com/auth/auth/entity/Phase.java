@@ -1,5 +1,7 @@
 package com.auth.auth.entity;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -32,8 +34,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "phase")
-public class Phase {
-    private static final long serialVersionUID = 1L;
+public class Phase implements Serializable {
+    @Serial
+    private final static long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

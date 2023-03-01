@@ -1,5 +1,7 @@
 package com.auth.auth.entity;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -24,7 +26,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "organization")
-public class Organization {
+public class Organization implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id

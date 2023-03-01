@@ -6,7 +6,6 @@ import com.auth.auth.ResourceNotFoundException;
 import com.auth.auth.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.auth.auth.entity.Erole;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -42,7 +41,7 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
      * @param name the name
      * @return the optional
      */
-    Optional<Role> findByName(Erole name);
+    Optional<Role> findByName(Role.Erole name);
 
 
 
